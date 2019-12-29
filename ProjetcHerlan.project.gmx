@@ -10,6 +10,10 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_main_menu</object>
+    <objects name="Inputs">
+      <object>objects\obj_joystick</object>
+    </objects>
+    <object>objects\obj_set_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>

@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,15 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu = ds_list_create();
-ds_list_add(menu, "Novo Jogo", "Continuar", "Sair");
-menu_select = 0;
+            <string>globalvar p1, p2;
 
-enum MAIN_MENU {
-    NOVO_JOGO,
-    CONTINUAR,
-    SAIR
+// Caso exista o Player 01
+p1 = joystick_exists(1);
+
+// Caso exista o Player 02
+p2 = joystick_exists(2);
+
+globalvar enum JOYSTICK_BUTTONS {
+    NONE = 00,
+    A = 01,
+    B = 02,
+    X = 04,
+    Y = 05,
+    R1 = 08,
+    R2 = 10,
+    L1 = 07,
+    L2 = 09,
+    START = 12,
+    SELECT = 11,
+    LEFT_ANALOG = 14,
+    RIGHT_ANALOG = 15
 }
+
+globalvar current_button;
+current_button = JOYSTICK_BUTTONS.NONE;
+
+globalvar enum JOYSTICK_DIRECTIONS {
+    IDLE = 101,
+    LEFT = 100,
+    RIGHT = 102,
+    UP = 104,
+    DOWN = 98
+}
+
 </string>
           </argument>
         </arguments>
@@ -56,31 +82,24 @@ enum MAIN_MENU {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_down)) {
-    menu_select++;
-    if (menu_select &gt; ds_list_size(menu)-1) {
-        menu_select = 0;
-    };
-} else if (keyboard_check(vk_up)) {
-    menu_select--;
-    if (menu_select &lt; 0) {
-        menu_select = ds_list_size(menu);
-    };
-} else if (keyboard_check(vk_enter)) {
-    switch (menu_select) {
-        case MAIN_MENU.NOVO_JOGO:
-            room_goto_next();
-        break;
-        case MAIN_MENU.CONTINUAR:
-            room_goto(room_load);
-        break;
-        case MAIN_MENU.SAIR:
-            game_end();
-        break;
-        default: room_goto_next();
+            <string>// Verifica os botões pressionados pelo player 01
+if (joystick_exists(p1)) {
+    for (var i = 0; i &lt;= joystick_buttons(p1); i++) {
+        if (joystick_check_button(p1, i)) {
+            current_button = i;
+        }
     }
-     
-};
+}
+
+// Verifica os botões pressionados pelo player 02
+if (joystick_exists(p2)) {
+    for (var i = 0; i &lt;= joystick_buttons(p2); i++) {
+        if (joystick_check_button(p2, i)) {
+            current_button = i;
+        }
+    }
+}
+
 </string>
           </argument>
         </arguments>
@@ -103,21 +122,23 @@ enum MAIN_MENU {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
+            <string>draw_text(0,00, "Nome do Joystick: " + string(joystick_name(p1)));
+draw_text(0,16, "Quantidade de Botões: " + string(joystick_buttons(p1)));
+draw_text(0,32, "Eixos: " + string(joystick_axes(p1)));
+draw_text(0,48, "Direções: " + string(joystick_direction(p1)));
+draw_text(0,64, "Tem POV: " + string(joystick_has_pov(p1)));
 
-for (var i = 0; i &lt; ds_list_size(menu); i += 1) {
-    if (menu_select == i) {
-        draw_set_colour(c_ltgray);
-    } else {
-        draw_set_colour(c_white);
-    }
-    
-    draw_text(room_width / 2, 128 + i * 16, string(menu[| i]));
-};
-
-draw_set_halign(fa_left);
-
-draw_text(100, 100, string(current_button))
+if (gamepad_is_supported()) {
+    draw_text(00, 96, "Gamepad count supporting: " + string(gamepad_get_device_count()));
+    for (var i = 0; i &lt;= gamepad_get_device_count(); i += 1) {
+        if (gamepad_is_connected(i)) {
+            draw_text(00, 128 + (i * 16), "Gamepad Device: " + string(i) + " " + string(gamepad_get_description(i)));
+            draw_text(00, 144 + (i * 16), "Gamepad Button Count: " + string(gamepad_button_count(i)));            
+        }// else {
+            //draw_text(00, 128 + (i * 16), "No Gamepad Device: " + string(i));
+        //}
+    };    
+}
 </string>
           </argument>
         </arguments>
