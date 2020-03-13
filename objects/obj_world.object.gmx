@@ -165,6 +165,24 @@ BattleMenu_subSelect = 0; // Wich menu is
             ExplorerMenu_select = ds_list_size(ExplorerMenu) - 1;
         };
     }
+    
+    if (keyboard_check_released(vk_enter)) {
+        switch (ExplorerMenu_select)
+        {
+            case 0:
+                menuOpen = false;
+            break;
+            
+            case 1:
+                // Code goes here
+            break;
+            
+            case 2:
+                game_end();
+            break;
+        }
+         
+    }
 }
 </string>
           </argument>

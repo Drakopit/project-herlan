@@ -102,7 +102,9 @@
       </scripts>
       <scripts name="Movement">
         <script>scripts\scr_gridMove.gml</script>
+        <script>scripts\scr_gridMoveEnemy.gml</script>
         <script>scripts\init_gridMove.gml</script>
+        <script>scripts\scr_initGridMoveEnemy.gml</script>
       </scripts>
     </scripts>
   </scripts>
