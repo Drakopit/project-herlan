@@ -127,6 +127,17 @@ enemy_count = floor(random_range(1,4));
 turns_count = 01;
 
 room_goto(room_battle_test);
+
+for (var i = 0; i &lt; enemy_count; i++) {
+    instance_create(view_wview[0] - 64, 128 + (i * 64), obj_enemy);
+};
+
+with(obj_player) {
+    x = 32;
+    y = 256;
+}
+
+instance_destroy();
 </string>
           </argument>
         </arguments>

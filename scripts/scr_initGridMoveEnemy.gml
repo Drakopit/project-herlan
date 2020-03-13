@@ -18,5 +18,5 @@ enum DIRECTIONS {
     DOWN
 }
 
-move = DIRECTIONS.RIGHT;
+move = DIRECTIONS.LEFT;
 

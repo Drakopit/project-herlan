@@ -129,8 +129,6 @@ for (var i = 0; i &lt; ds_list_size(menu); i += 1) {
 draw_set_colour(c_white);
 draw_set_font(fo_default);
 draw_set_halign(fa_left);
-
-draw_text(100, 100, string(current_button))
 </string>
           </argument>
         </arguments>

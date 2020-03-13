@@ -91,11 +91,32 @@ ExplorerMenu_select = 0;
 /***************************************************
   Menu in battle world
  ***************************************************/
+
+enum MENU_BATTLE {
+    IDLE,
+    ATTACK,
+    MAGIC,
+    ITEM,
+    RUN
+}
+
+BattleMenuIdle = ds_list_create();
+ds_list_add(BattleMenuIdle, "Attack", "Magic", "Item", "Run");
+
+BattleMenuIdle = ds_list_create();
  
-BattleMenu[0, 0] = "Attack";
-BattleMenu[0, 1] = "Magic";
-BattleMenu[0, 2] = "Item";
-BattleMenu[0, 3] = "Run";
+BattleMenu = ds_map_create();
+ds_map_add(BattleMenu, MENU_BATTLE.IDLE, BattleMenuIdle);
+
+BattleMenu = ds_map_create();
+ds_map_add(BattleMenu, MENU_BATTLE.ATTACK, '');
+
+
+BattleMenuMagic = ds_list_create();
+
+BattleMenu = ds_map_create();
+ds_map_add(BattleMenu, MENU_BATTLE.MAGIC, BattleMenuMagic);
+
 
 BattleMenu_select = 0; // Option selected
 BattleMenu_subSelect = 0; // Wich menu is
@@ -171,6 +192,7 @@ BattleMenu_subSelect = 0; // Wich menu is
         {
             case 0:
                 menuOpen = false;
+                instance_activate_all();
             break;
             
             case 1:

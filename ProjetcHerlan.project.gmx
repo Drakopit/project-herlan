@@ -67,6 +67,7 @@
     <backgrounds name="TileSets">
       <background>background\back_tileset</background>
       <background>background\back_tileset_rpg</background>
+      <background>background\back_tileset_city</background>
     </backgrounds>
     <backgrounds name="Paralax">
       <backgrounds name="Enchanted Forest">
@@ -89,11 +90,17 @@
         <background>background\para_simple_forest_layer_03</background>
       </backgrounds>
     </backgrounds>
+    <backgrounds name="Battle">
+      <background>background\back_battle_test</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Battle System">
       <script>scripts\scr_begin_battle.gml</script>
+      <scripts name="Menu">
+        <script>scripts\scr_menuBattle.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Exploration">
       <script>scripts\scr_exploration_system.gml</script>

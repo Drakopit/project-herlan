@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,7 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>if (turn_battle == TURN_BATTLE.PLAYER) {
+    draw_text(10,10, "Turno do Jogador!");
+} else if (turn_battle == TURN_BATTLE.ENEMY) {
+    draw_text(10,10, "Turno do Inimigo!");
+} else {
+    draw_text(10,10, "Erro de Turno!");
+}
+
+draw_text(10, 30, "Número de Turnos: " + string(turns_count));
+
+draw_text(10, 50, "Número de inimigos: " + string(enemy_count));
+</string>
           </argument>
         </arguments>
       </action>

@@ -36,7 +36,7 @@ if (!isMoving) {
                 
                 sprite_index = spr_up;
             }
-        break
+        break;
         
         // down
         case DIRECTIONS.DOWN:
@@ -48,8 +48,9 @@ if (!isMoving) {
                 
                 sprite_index = spr_down;
             }
-        break        
+        break;        
     }
+    move = round(choose(0, 1, 2, 3, 4));
 }
 
 
@@ -64,6 +65,5 @@ if (isMoving) {
     }
 } else {
     // If idle
-    move = round(choose(0, 1, 2, 3));
     sprite_index = spr_idle;
 }
