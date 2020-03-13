@@ -22,6 +22,11 @@
         <sprite>sprites\spr_player_idle</sprite>
         <sprite>sprites\spr_player_run</sprite>
         <sprite>sprites\spr_player_portrait</sprite>
+        <sprite>sprites\spr_player_down</sprite>
+        <sprite>sprites\spr_player_right</sprite>
+        <sprite>sprites\spr_player_left</sprite>
+        <sprite>sprites\spr_player_up</sprite>
+        <sprite>sprites\spr_player_stand</sprite>
       </sprites>
       <sprites name="Ally">
         <sprite>sprites\spr_ally_idle</sprite>
@@ -37,6 +42,10 @@
       <sprite>sprites\spr_orange_slime_run</sprite>
       <sprite>sprites\spr_worm_run</sprite>
       <sprite>sprites\spr_worm_idle</sprite>
+      <sprite>sprites\spr_blue_slime_down</sprite>
+      <sprite>sprites\spr_blue_slime_left</sprite>
+      <sprite>sprites\spr_blue_slime_right</sprite>
+      <sprite>sprites\spr_blue_slime_up</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_slots</sprite>
@@ -49,6 +58,7 @@
     </sprites>
     <sprites name="System">
       <sprite>sprites\spr_trigger_24x24</sprite>
+      <sprite>sprites\spr_trigger_32x32</sprite>
       <sprite>sprites\spr_trigger_16x16</sprite>
       <sprite>sprites\sprite16</sprite>
     </sprites>
@@ -56,6 +66,7 @@
   <backgrounds name="background">
     <backgrounds name="TileSets">
       <background>background\back_tileset</background>
+      <background>background\back_tileset_rpg</background>
     </backgrounds>
     <backgrounds name="Paralax">
       <backgrounds name="Enchanted Forest">
@@ -80,6 +91,21 @@
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Battle System">
+      <script>scripts\scr_begin_battle.gml</script>
+    </scripts>
+    <scripts name="Exploration">
+      <script>scripts\scr_exploration_system.gml</script>
+      <scripts name="MainMenu">
+        <script>scripts\scr_drawMainMeu.gml</script>
+      </scripts>
+      <scripts name="Movement">
+        <script>scripts\scr_gridMove.gml</script>
+        <script>scripts\init_gridMove.gml</script>
+      </scripts>
+    </scripts>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\fo_mainMenu</font>
     <font>fonts\fo_default</font>
@@ -98,10 +124,12 @@
       <objects name="Battle System">
         <object>objects\obj_world</object>
       </objects>
+      <object>objects\obj_grid</object>
     </objects>
     <objects name="Scene">
-      <object>objects\obj_collider_16x16</object>
+      <object>objects\obj_collider_32x32</object>
     </objects>
+    <object>objects\obj_enemy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>
@@ -110,6 +138,9 @@
     </rooms>
     <rooms name="MainMenu">
       <room>rooms\room_load</room>
+    </rooms>
+    <rooms name="Battle">
+      <room>rooms\room_battle_test</room>
     </rooms>
   </rooms>
   <help>

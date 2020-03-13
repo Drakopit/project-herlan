@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -46,6 +46,59 @@ globalvar enum MACHINE_BATTLE {
 }
 globalvar current_battle_state;
 current_battle_state = MACHINE_BATTLE.IDLE;
+
+globalvar enum TURN_BATTLE {
+    PLAYER,
+    ENEMY
+}
+
+// In case of Battle
+globalvar turns_count;
+globalvar turn_battle;
+globalvar enemy_count;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>globalvar menuOpen;
+menuOpen = false;
+
+/***************************************************
+  Menu in explorer mode
+ ***************************************************/
+
+ExplorerMenu = ds_list_create();
+ds_list_add(ExplorerMenu, "Resume", "Options", "Quit");
+
+ExplorerMenu_select = 0;
+
+/***************************************************
+  Menu in battle world
+ ***************************************************/
+ 
+BattleMenu[0, 0] = "Attack";
+BattleMenu[0, 1] = "Magic";
+BattleMenu[0, 2] = "Item";
+BattleMenu[0, 3] = "Run";
+
+BattleMenu_select = 0; // Option selected
+BattleMenu_subSelect = 0; // Wich menu is
 </string>
           </argument>
         </arguments>
@@ -71,12 +124,95 @@ current_battle_state = MACHINE_BATTLE.IDLE;
             <string>switch (current_world_state)
 {
     case MACHINE_WORLD.EXPLORATION:
-        // Code goes here!
+        scr_exploration_system();
     break;
     case MACHINE_WORLD.IN_BATTLE:
+        scr_begin_battle();
     break;
 }
  
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (menuOpen) {
+    if (keyboard_check_released(vk_down)) {
+        ExplorerMenu_select++;
+        audio_play_sound(Retro_Cursor, 10, false);
+        if (ExplorerMenu_select &gt; ds_list_size(ExplorerMenu)-1) {
+            ExplorerMenu_select = 0;
+        };
+    } else if (keyboard_check_released(vk_up)) {
+        ExplorerMenu_select--;
+        audio_play_sound(Retro_Cursor, 10, false);
+        if (ExplorerMenu_select &lt; 0) {
+            ExplorerMenu_select = ds_list_size(ExplorerMenu) - 1;
+        };
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch (current_world_state)
+{
+    case MACHINE_WORLD.EXPLORATION:
+        // Script that draw main menu in exploration mode
+        scr_drawMainMeu();
+    break;
+    
+    case MACHINE_WORLD.IN_BATTLE:
+        // If is player turn
+        if (turn_battle == TURN_BATTLE.PLAYER) {
+            for (var i = 0; i &lt; array_height_2d(BattleMenu); i++)
+            {
+                if (BattleMenu_select = i) {
+                    draw_set_colour(c_white);
+                } else {
+                    draw_set_colour(c_gray);
+                };
+                
+                draw_text(50, 200 + (i * 16), string(BattleMenu[BattleMenu_subSelect, i]));
+            };            
+        }
+    break;
+}
+ 
+
 </string>
           </argument>
         </arguments>
