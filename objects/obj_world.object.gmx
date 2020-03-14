@@ -145,8 +145,7 @@ BattleMenu_subSelect = 0; // Wich menu is
             <string>switch (current_world_state)
 {
     case MACHINE_WORLD.EXPLORATION:
-        scr_exploration_system();
-        scr_actions();
+        scr_exploration_system();        
     break;
     case MACHINE_WORLD.IN_BATTLE:
         scr_begin_battle();
