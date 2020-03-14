@@ -55,6 +55,8 @@
       <sprite>sprites\spr_chest</sprite>
       <sprite>sprites\spr_status_arrow</sprite>
       <sprite>sprites\spr_status_window</sprite>
+      <sprite>sprites\spr_simple_window</sprite>
+      <sprite>sprites\spr_cursor</sprite>
     </sprites>
     <sprites name="System">
       <sprite>sprites\spr_trigger_24x24</sprite>
@@ -98,21 +100,34 @@
     </backgrounds>
     <backgrounds name="Battle">
       <background>background\back_battle_test</background>
+      <background>background\back_battle_test_0</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scr_initWorldStateMachine.gml</script>
     <scripts name="Battle System">
       <script>scripts\scr_begin_battle.gml</script>
       <scripts name="Menu">
-        <script>scripts\scr_menuBattle.gml</script>
+        <script>scripts\scr_initBattleSystem.gml</script>
+        <script>scripts\scr_stepBattleSystem.gml</script>
+        <script>scripts\scr_drawBattleSystem.gml</script>
+      </scripts>
+      <scripts name="Attacks">
+        <script>scripts\scr_simpleAttack.gml</script>
       </scripts>
     </scripts>
     <scripts name="Exploration">
       <script>scripts\scr_exploration_system.gml</script>
       <scripts name="MainMenu">
-        <script>scripts\scr_drawMainMeu.gml</script>
+        <script>scripts\scr_initMainMenu.gml</script>
         <script>scripts\scr_stepMainMenu.gml</script>
+        <script>scripts\scr_drawMainMeu.gml</script>
+      </scripts>
+      <scripts name="Inventory">
+        <script>scripts\scr_initInventory.gml</script>
+        <script>scripts\scr_stepInventory.gml</script>
+        <script>scripts\scr_drawInventory.gml</script>
       </scripts>
       <scripts name="Movement">
         <script>scripts\scr_gridMove.gml</script>
@@ -120,7 +135,7 @@
         <script>scripts\init_gridMove.gml</script>
         <script>scripts\scr_initGridMoveEnemy.gml</script>
       </scripts>
-      <script>scripts\scr_actions.gml</script>
+      <script>scripts\scr_initExplorationStateMachine.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -135,11 +150,12 @@
       <object>objects\obj_player</object>
     </objects>
     <objects name="System">
+      <object>objects\obj_world</object>
+      <object>objects\obj_grid</object>
       <object>objects\obj_set_controller</object>
       <object>objects\obj_main_menu</object>
       <object>objects\obj_HUD</object>
       <objects name="Battle System">
-        <object>objects\obj_world</object>
         <objects name="Skills">
           <object>objects\obj_parent_skill</object>
           <object>objects\obj_fire_lv1</object>
@@ -149,13 +165,17 @@
           <object>objects\obj_item_base</object>
           <object>objects\obj_sword_lv2</object>
         </objects>
+        <objects name="Attacks">
+          <object>objects\obj_simpleAttack</object>
+        </objects>
       </objects>
-      <object>objects\obj_grid</object>
     </objects>
     <objects name="Scene">
       <object>objects\obj_collider_32x32</object>
     </objects>
-    <object>objects\obj_enemy</object>
+    <objects name="Enemy">
+      <object>objects\obj_enemy</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>

@@ -3,4 +3,4 @@
  ***************************************************/
 
 scr_stepMainMenu();
-scr_actions();
+scr_stepInventory();

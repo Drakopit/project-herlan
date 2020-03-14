@@ -4,17 +4,22 @@
 
 // Open or close main menu
 if (keyboard_check_released(vk_escape)) {
-    if (menuOpen) {
-        menuOpen = false
-        instance_activate_all();
-    } else {
-        menuOpen = true;
-        instance_deactivate_all(true);
-    }
+    switch (current_state_exploration)
+    {
+        case MACHINE_EXPLORATION.MENU:
+            current_state_exploration = MACHINE_EXPLORATION.NOONE;
+            instance_activate_all();
+        break;
+        
+        case MACHINE_EXPLORATION.NOONE:
+            current_state_exploration = MACHINE_EXPLORATION.MENU;
+            instance_deactivate_all(true);        
+        break;
+    }     
 }
 
 // If main menu exploration is open
-if (menuOpen) {
+if (current_state_exploration == MACHINE_EXPLORATION.MENU) {
     // Movement on menu
     if (keyboard_check_released(vk_down)) {
         ExplorerMenu_select++;
@@ -35,7 +40,7 @@ if (menuOpen) {
          switch (ExplorerMenu_select)
          {
              case 0:
-                menuOpen = false;
+                current_state_exploration = MACHINE_EXPLORATION.NOONE;
                 instance_activate_all();
              break;
     
