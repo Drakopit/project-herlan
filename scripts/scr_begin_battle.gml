@@ -2,23 +2,23 @@
 if (turn_battle == TURN_BATTLE.PLAYER) {
     switch (current_battle_state)
     {
-        case MACHINE_BATTLE.IDLE:
+        case MENU_BATTLE.IDLE:
         
         break;
         
-        case MACHINE_BATTLE.ATTACK:
+        case MENU_BATTLE.ATTACK:
         
         break;
         
-        case MACHINE_BATTLE.MAGIC:
+        case MENU_BATTLE.MAGIC:
         
         break;
         
-        case MACHINE_BATTLE.ITEM:
+        case MENU_BATTLE.ITEM:
         
         break;
         
-        case MACHINE_BATTLE.RUN:
+        case MENU_BATTLE.RUN:
         
         break;
     }

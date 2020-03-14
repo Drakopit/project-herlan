@@ -36,26 +36,6 @@ globalvar enum MACHINE_WORLD {
 // Set curret state of the world, like exploration (Free)
 globalvar current_world_state;
 current_world_state = MACHINE_WORLD.EXPLORATION;
-
-globalvar enum MACHINE_BATTLE {
-    IDLE,
-    ATTACK,
-    MAGIC,
-    ITEM,
-    RUN
-}
-globalvar current_battle_state;
-current_battle_state = MACHINE_BATTLE.IDLE;
-
-globalvar enum TURN_BATTLE {
-    PLAYER,
-    ENEMY
-}
-
-// In case of Battle
-globalvar turns_count;
-globalvar turn_battle;
-globalvar enemy_count;
 </string>
           </argument>
         </arguments>
@@ -79,6 +59,10 @@ globalvar enemy_count;
             <string>globalvar menuOpen;
 menuOpen = false;
 
+globalvar inventoryOpen;
+inventoryOpen = false;
+
+
 /***************************************************
   Menu in explorer mode
  ***************************************************/
@@ -100,26 +84,42 @@ enum MENU_BATTLE {
     RUN
 }
 
-BattleMenuIdle = ds_list_create();
-ds_list_add(BattleMenuIdle, "Attack", "Magic", "Item", "Run");
-
-BattleMenuIdle = ds_list_create();
+/***************************************************
+  Menu Battle Options
+ ***************************************************/ 
  
-BattleMenu = ds_map_create();
-ds_map_add(BattleMenu, MENU_BATTLE.IDLE, BattleMenuIdle);
+if (false) {
+// Menus length 
+BattleMenuLength = array_create(5);
+  
+// Main menu battle
+BattleMenu[MENU_BATTLE.IDLE, 00] = "Attack";
+BattleMenu[MENU_BATTLE.IDLE, 01] = "Magic";
+BattleMenu[MENU_BATTLE.IDLE, 02] = "Item";
+BattleMenu[MENU_BATTLE.IDLE, 03] = "Run";
+BattleMenuLength[MENU_BATTLE.IDLE] = array_length_2d(BattleMenu, MENU_BATTLE.IDLE);
 
-BattleMenu = ds_map_create();
-ds_map_add(BattleMenu, MENU_BATTLE.ATTACK, '');
 
+// Sub menu magic option
+for (var i = 0; i &lt; array_length_2d(obj_player.Magics, 0); i++) {
+    BattleMenu[MENU_BATTLE.MAGIC, i] = obj_player.Magics[0, i];
+}
+BattleMenuLength[MENU_BATTLE.MAGIC] = array_length_2d(BattleMenu, MENU_BATTLE.MAGIC);
 
-BattleMenuMagic = ds_list_create();
+// Sub menu item option
+for (var i = 0; i &lt; array_length_2d(obj_player.Inventory, 0); i++) {
+    BattleMenu[MENU_BATTLE.ITEM, i] = obj_player.Inventory[0, i];
+}
+BattleMenuLength[MENU_BATTLE.ITEM] = array_length_2d(BattleMenu, MENU_BATTLE.ITEM);
 
-BattleMenu = ds_map_create();
-ds_map_add(BattleMenu, MENU_BATTLE.MAGIC, BattleMenuMagic);
+// Sub menu run option
+BattleMenu[MENU_BATTLE.RUN, 00] = true;
+BattleMenuLength[MENU_BATTLE.RUN] = array_length_2d(BattleMenu, MENU_BATTLE.RUN);
 
-
+// Cursors
 BattleMenu_select = 0; // Option selected
 BattleMenu_subSelect = 0; // Wich menu is
+}
 </string>
           </argument>
         </arguments>
@@ -146,66 +146,13 @@ BattleMenu_subSelect = 0; // Wich menu is
 {
     case MACHINE_WORLD.EXPLORATION:
         scr_exploration_system();
+        scr_actions();
     break;
     case MACHINE_WORLD.IN_BATTLE:
         scr_begin_battle();
     break;
 }
  
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (menuOpen) {
-    if (keyboard_check_released(vk_down)) {
-        ExplorerMenu_select++;
-        audio_play_sound(Retro_Cursor, 10, false);
-        if (ExplorerMenu_select &gt; ds_list_size(ExplorerMenu)-1) {
-            ExplorerMenu_select = 0;
-        };
-    } else if (keyboard_check_released(vk_up)) {
-        ExplorerMenu_select--;
-        audio_play_sound(Retro_Cursor, 10, false);
-        if (ExplorerMenu_select &lt; 0) {
-            ExplorerMenu_select = ds_list_size(ExplorerMenu) - 1;
-        };
-    }
-    
-    if (keyboard_check_released(vk_enter)) {
-        switch (ExplorerMenu_select)
-        {
-            case 0:
-                menuOpen = false;
-                instance_activate_all();
-            break;
-            
-            case 1:
-                // Code goes here
-            break;
-            
-            case 2:
-                game_end();
-            break;
-        }
-         
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -236,9 +183,13 @@ BattleMenu_subSelect = 0; // Wich menu is
     break;
     
     case MACHINE_WORLD.IN_BATTLE:
+        draw_text(400, 10, "IN BATTLE");
         // If is player turn
         if (turn_battle == TURN_BATTLE.PLAYER) {
-            for (var i = 0; i &lt; array_height_2d(BattleMenu); i++)
+            var menu_reading = ds_map_find_value(BattleMenu, MENU_BATTLE.IDLE);
+            var current_menu = ds_list_read(BattleMenuIdle, menu_reading);
+            draw_text(10,128, string(current_menu));
+            for (var i = 0; i &lt; ds_list_size(BattleMenuIdle); i++)
             {
                 if (BattleMenu_select = i) {
                     draw_set_colour(c_white);

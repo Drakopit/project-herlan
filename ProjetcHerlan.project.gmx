@@ -62,6 +62,12 @@
       <sprite>sprites\spr_trigger_16x16</sprite>
       <sprite>sprites\sprite16</sprite>
     </sprites>
+    <sprites name="Skill Animations">
+      <sprite>sprites\spr_skill_base</sprite>
+    </sprites>
+    <sprites name="Items">
+      <sprite>sprites\sprt_sword</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="TileSets">
@@ -113,6 +119,7 @@
         <script>scripts\init_gridMove.gml</script>
         <script>scripts\scr_initGridMoveEnemy.gml</script>
       </scripts>
+      <script>scripts\scr_actions.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -132,6 +139,15 @@
       <object>objects\obj_HUD</object>
       <objects name="Battle System">
         <object>objects\obj_world</object>
+        <objects name="Skills">
+          <object>objects\obj_parent_skill</object>
+          <object>objects\obj_fire_lv1</object>
+          <object>objects\obj_ice_lv1</object>
+        </objects>
+        <objects name="Items">
+          <object>objects\obj_item_base</object>
+          <object>objects\obj_sword_lv2</object>
+        </objects>
       </objects>
       <object>objects\obj_grid</object>
     </objects>
