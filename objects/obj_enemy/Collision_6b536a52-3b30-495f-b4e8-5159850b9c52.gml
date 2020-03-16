@@ -1,0 +1,1 @@
+scr_meetingBattle(self, room_battle_test);

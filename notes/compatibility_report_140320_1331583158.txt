@@ -1,0 +1,80 @@
+Converting GML script: ${project_dir}\scripts\scr_drawMainMeu\scr_drawMainMeu.gml
+Converted builtin - line 4: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 15: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 15: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 18: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 18: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 29: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 4: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_drawInventory\scr_drawInventory.gml
+Converted builtin - line 8: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 17: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 17: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 20: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 20: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 23: view_wport[0] -> __view_get( e__VW.WPort, 0 )
+Converted builtin - line 8: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 17: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 17: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 20: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 20: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 24: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+
+Converting GML script: ${project_dir}\scripts\scr_gridMove\scr_gridMove.gml
+Converted string - line 3: 'D' -> "D"
+Converted string - line 3: 'd' -> "d"
+Converted string - line 12: 'A' -> "A"
+Converted string - line 12: 'a' -> "a"
+Converted string - line 25: 'W' -> "W"
+Converted string - line 25: 'w' -> "w"
+Converted string - line 34: 'S' -> "S"
+Converted string - line 34: 's' -> "s"
+
+Font fo_mainMenu has been converted to font family Snap ITC (Regular)
+GameMaker Studio 1 font texture has been backed up at ${project_dir}\fonts\fo_mainMenu\fo_mainMenu.gms1.png
+Font fo_default has been converted to font family Arial (Regular)
+GameMaker Studio 1 font texture has been backed up at ${project_dir}\fonts\fo_default\fo_default.gms1.png
+Converting GML script: ${project_dir}\objects\obj_player\Create_0.gml
+ERROR: C:\Users\bruni\OneDrive\Documentos\GameMakerStudio2\Project Herlan\ProjetcHerlan\objects\obj_player\Create_0.gml - 6: unexpected syntax error
+ERROR: C:\Users\bruni\OneDrive\Documentos\GameMakerStudio2\Project Herlan\ProjetcHerlan\objects\obj_player\Create_0.gml - 38: unexpected syntax error
+ERROR: C:\Users\bruni\OneDrive\Documentos\GameMakerStudio2\Project Herlan\ProjetcHerlan\objects\obj_player\Create_0.gml - 55: unexpected syntax error
+ERROR: C:\Users\bruni\OneDrive\Documentos\GameMakerStudio2\Project Herlan\ProjetcHerlan\objects\obj_player\Create_0.gml - 55: unexpected syntax error
+ERROR: C:\Users\bruni\OneDrive\Documentos\GameMakerStudio2\Project Herlan\ProjetcHerlan\objects\obj_player\Create_0.gml - 59: unexpected syntax error
+Too many errors - GML not processed : ${project_dir}\objects\obj_player\Create_0.gml
+
+macOS icon ${options_dir}\mac\icons\icon512.png written out as 32-bit
+Windows NSIS Installer Script has been set to default due to changes in GameMaker Studio 2
+Converting GML script: ${project_dir}\objects\obj_enemy\Collision_6b536a52-3b30-495f-b4e8-5159850b9c52.gml
+Converted builtin - line 10: view_wview[0] -> __view_get( e__VW.WView, 0 )
+
+Missing audiogroup for sound: 'Celestial' - setting to default audio group
+Missing audiogroup for sound: 'Foggy_Woods' - setting to default audio group
+Missing audiogroup for sound: 'Nocturnal_Mysteries' - setting to default audio group
+Missing audiogroup for sound: 'Red_Carpet_Wooden_Floor' - setting to default audio group
+Missing audiogroup for sound: 'The_Arrival__BATTLE_II_' - setting to default audio group
+Missing audiogroup for sound: 'Windless_Slopes' - setting to default audio group
+Missing audiogroup for sound: 'Retro_Cursor' - setting to default audio group
+Missing audiogroup for sound: 'Chose_Option' - setting to default audio group
+Game speed set to 30
+Added compatibility script 'action/action_inherited.gml'
+Added compatibility script 'action/action_kill_object.gml'
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'joystick/joystick_axes.gml'
+Added compatibility script 'joystick/joystick_buttons.gml'
+Added compatibility script 'joystick/joystick_check_button.gml'
+Added compatibility script 'joystick/joystick_direction.gml'
+Added compatibility script 'joystick/joystick_exists.gml'
+Added compatibility script 'joystick/joystick_has_pov.gml'
+Added compatibility script 'joystick/joystick_name.gml'
+Added compatibility script 'joystick/__joystick_2_gamepad.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'action/__init_action.gml'
+Added compatibility script 'joystick/__init_joystick.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script 'joystick/joystick_process_events.gml'
+Added compatibility script 'joystick/joystick_xpos.gml'
+Added compatibility script 'joystick/joystick_ypos.gml'
+Added compatibility script '__global_object_depths.gml'
