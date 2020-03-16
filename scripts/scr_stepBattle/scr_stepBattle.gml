@@ -9,10 +9,7 @@ if (turn_battle == TURN_BATTLE.PLAYER) {
         
         case MENU_BATTLE.ATTACK:
             // Developing
-            scr_simpleAttack(obj_player, other);
-			current_battle_state = MENU_BATTLE.IDLE;
-			turn_battle = TURN_BATTLE.ENEMY;
-			turns_count++;
+			scr_choseEnemy(obj_enemy);
         break;
         
         case MENU_BATTLE.MAGIC:

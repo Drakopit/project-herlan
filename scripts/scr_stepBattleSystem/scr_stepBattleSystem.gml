@@ -25,6 +25,6 @@ if (keyboard_check_released(vk_enter)) {
     // again.
     BattleMenu_select = 0;
     // Change the state according option chosen
-    current_battle_state = BattleMenu_select;
+    current_battle_state = BattleMenu_select + 1;
 }
 
