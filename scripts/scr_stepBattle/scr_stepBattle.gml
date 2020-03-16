@@ -10,7 +10,9 @@ if (turn_battle == TURN_BATTLE.PLAYER) {
         case MENU_BATTLE.ATTACK:
             // Developing
             scr_simpleAttack(obj_player, other);
+			current_battle_state = MENU_BATTLE.IDLE;
 			turn_battle = TURN_BATTLE.ENEMY;
+			turns_count++;
         break;
         
         case MENU_BATTLE.MAGIC:
@@ -22,7 +24,12 @@ if (turn_battle == TURN_BATTLE.PLAYER) {
         break;
         
         case MENU_BATTLE.RUN:
-			
+			var result = scr_run(obj_player, obj_enemy);
+			current_battle_state = MENU_BATTLE.IDLE;
+			turn_battle = TURN_BATTLE.ENEMY;
+			if (!result) {
+				turns_count++;
+			}
         break;
     }
 } else {

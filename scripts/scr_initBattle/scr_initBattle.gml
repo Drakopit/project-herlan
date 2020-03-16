@@ -21,7 +21,7 @@ with(obj_player) {
 	moveTimer = 0;
 	vSpeed = 0;
 	hSpeed = 0;
-	sprite_index = spr_idle;
+	sprite_index = spr_player_stand;
 	x = 032;
 	y = 256;
 }

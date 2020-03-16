@@ -1,5 +1,7 @@
 draw_set_color(c_white);
 
+draw_text(camera_get_view_width(view_camera[0]) / 2, 10, string_hash_to_newline("IN BATTLE"));
+
 if (turn_battle == TURN_BATTLE.PLAYER) {
     draw_text(10,10, string("Turno do Jogador!"));
 } else if (turn_battle == TURN_BATTLE.ENEMY) {

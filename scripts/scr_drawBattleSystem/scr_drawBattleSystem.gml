@@ -8,7 +8,7 @@ if (turn_battle == TURN_BATTLE.PLAYER) {
             draw_set_colour(c_gray);
         };
         
-        draw_text(50, 200 + (i * 16), string(BattleMenu[current_battle_state, i]));
+        draw_text(64, 256 + (i * 16), string(BattleMenu[current_battle_state, i]));
     };            
 }
 
