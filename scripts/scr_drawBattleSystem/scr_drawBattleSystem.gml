@@ -1,6 +1,6 @@
 // If is player turn
 if (turn_battle == TURN_BATTLE.PLAYER) {    
-    for (var i = 0; i < BattleMenuLength[current_battle_state] - 1; i++)
+    for (var i = 0; i < BattleMenuLength[current_battle_state]; i++)
     {
         if (BattleMenu_select = i) {
             draw_set_colour(c_white);

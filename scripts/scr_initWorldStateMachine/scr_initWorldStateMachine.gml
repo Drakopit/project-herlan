@@ -24,4 +24,5 @@ turn_battle = TURN_BATTLE.PLAYER;
 // In case of Battle
 globalvar turns_count;
 globalvar enemy_count;
+globalvar last_enemy;
 #endregion

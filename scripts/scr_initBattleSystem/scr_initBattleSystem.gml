@@ -16,7 +16,7 @@ enum MENU_BATTLE {
 
 #region Work in progress
 // Menus length 
-BattleMenuLength = array_create(5);
+BattleMenuLength = array_create(6);
   
 // Main menu battle
 BattleMenu[MENU_BATTLE.IDLE, 00] = "Attack";
@@ -25,9 +25,12 @@ BattleMenu[MENU_BATTLE.IDLE, 02] = "Item";
 BattleMenu[MENU_BATTLE.IDLE, 03] = "Run";
 BattleMenuLength[MENU_BATTLE.IDLE] = array_length_2d(BattleMenu, MENU_BATTLE.IDLE);
 
+BattleMenu[MENU_BATTLE.ATTACK, 00] = true;
+BattleMenuLength[MENU_BATTLE.ATTACK] = array_length_2d(BattleMenu, MENU_BATTLE.ATTACK);
+
 // Sub menu magic option
-for (var i = 0; i < array_length_2d(obj_player.Magics, 0); i++) {
-	BattleMenu[MENU_BATTLE.MAGIC, i] = obj_player.Magics[0, i];
+for (var i = 0; i < array_length_2d(obj_player.Magics, 1); i++) {
+	BattleMenu[MENU_BATTLE.MAGIC, i] = obj_player.Magics[obj_player.magic_level, i];
 }
 BattleMenuLength[MENU_BATTLE.MAGIC] = array_length_2d(BattleMenu, MENU_BATTLE.MAGIC);
 
